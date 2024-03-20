@@ -1,20 +1,19 @@
 <template>
   <div id="app" class="container mt-5">
-    <h1 class="animate__fadeInLeft">IDShops</h1>
-    <navbarComponent :cart="cart" :cartQty="cartQty" :cartTotal="cartTotal" @toggle="toggleSliderStatus" @delete="deleteItem"></navbarComponent>
-    <!-- <font-awesome-icon icon="shopping-cart"></font-awesome-icon> -->
-    <PriceComponent :value="4.23"></PriceComponent>
-    <price-slider :sliderStatus="sliderStatus" :maximum.sync="maximum"></price-slider>
-    <!-- <PriceSlider :sliderStatus="sliderStatus" :maximum.sync="maximum"></PriceSlider> -->
-    <product-list :products="products" :maximum="maximum" @add="addItem"></product-list>
+    <router-view :cart="cart" 
+                      :cartQty="cartQty" 
+                      :cartTotal="cartTotal"
+                      :maximum.sync="maximum"
+                      :products="products"
+                      :sliderStatus="sliderStatus"
+                      @toggle="toggleSliderStatus"
+                      @add="addItem"
+                      @delete="deleteItem"></router-view>
   </div>
 </template>
 
 <script>
 
-import NavbarComponent from "./components/NavbarComponent.vue";
-import PriceSlider from "./components/PriceSlider.vue";
-import ProductList from "./components/ProductList.vue";
 
 export default {
   name: 'App',
@@ -28,9 +27,6 @@ export default {
   },
   components: {
 
-    PriceSlider,
-    ProductList,
-    NavbarComponent
   },
   mounted:function()
     {
