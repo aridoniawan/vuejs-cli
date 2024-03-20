@@ -3,12 +3,15 @@
     <h1 class="animate__fadeInLeft">IDShops</h1>
     <font-awesome-icon icon="shopping-cart"></font-awesome-icon>
     <PriceComponent :value="4.23"></PriceComponent>
+    <price-slider :sliderStatus="sliderStatus" :maximum.sync="maximum"></price-slider>
+    <!-- <PriceSlider :sliderStatus="sliderStatus" :maximum.sync="maximum"></PriceSlider> -->
     <product-list :products="products" :maximum="maximum" @add="addItem"></product-list>
   </div>
 </template>
 
 <script>
 // import {FontAwesomeIcon} from '@fortawesome/vue-fontawesome';
+import PriceSlider from "./components/PriceSlider.vue";
 import ProductList from "./components/ProductList.vue";
 
 export default {
@@ -17,11 +20,13 @@ export default {
     return{
       maximum: 50,
       products: [],
-      cart: []
+      cart: [],
+      sliderStatus: true
     }
   },
   components: {
     // FontAwesomeIcon,
+    PriceSlider,
     ProductList
   },
   mounted:function()
